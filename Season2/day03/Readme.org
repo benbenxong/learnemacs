@@ -6,8 +6,21 @@
 
 ** Split your configs into multiple files
 1. use Git to management your init file
+cd C:\Users\alan\AppData\Roaming\.emacs.d  -file/git bash here
+$ git init
+$ git add .
+$ git commit -m "first commit"
+//未提交前恢复
+$ git checkout init.el
+  (init.el 中需设置(global-auto-revert-mode t) 即当外部文件修改时不用重新打开此文件)
+//auto-save-list 不参加备份
+$ vim .gitignore +auto-save-list
+$ git add .gitignore
+$ git commit -m "add .gitignore"
+注：(setq auto-save-default nil)貌似不起作用！
 
 2. help window is anoyying.. 
+解决帮助窗口打开后，光标没有定位到此窗口，导致需进入此窗口后再按Q。
 #+BEGIN_SRC emacs-lisp
 ;; add popwin mode
 ;; why this line is needed
@@ -19,13 +32,15 @@
 3. load-file, load-path and load
 4. features, provide and require, autoload
 5. naming conventions
-zilongshanren/xxxx
-minor mode or major mode.
+zilongshanren/xxxx //变量名或函数名
+minor mode or major mode. //命名mode最好带自己的前缀
 niubi-mode
 niubi-xxx 
 
    all of the names should have a prefix, such that the naming conflicts could be minimal.  
 6. define your abbrevs
+因为系统补全，如zilongshanren/packages，会补全很长的名字。为解决这种情况，就定义自己的缩写。
+例：输入8ms加空格或其它非字母则会补全为: Mircsoft .
 #+BEGIN_SRC emacs-lisp
   (setq-default abbrev-mode t)
 
@@ -37,11 +52,11 @@ niubi-xxx
                                               ))
 #+END_SRC
 7. how to organize your configs
-- init-packages.el
-- init-ui.el
-- init-better-defaults.el
-- init-keybindings.el
-- custom.el
+- init-packages.el //包相关
+- init-ui.el  //显示相关
+- init-better-defaults.el  //默认值
+- init-keybindings.el  //快捷键
+- custom.el  //存放自动生成配置。如init.el最后
 #+BEGIN_SRC emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 #+END_SRC
