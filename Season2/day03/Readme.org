@@ -31,6 +31,10 @@ $ git commit -m "add .gitignore"
 
 3. load-file, load-path and load
 4. features, provide and require, autoload
+(package-initialize)将初始化所有带autoload注释的features;
+自定义的el文件，最后一行应定义(provide 'init-packages)以声明此文件标识;
+init.el 头部应加上(require 'init-packages)。
+并在前面加上load-path路径(add-to-list 'load-path ..)
 5. naming conventions
 zilongshanren/xxxx //变量名或函数名
 minor mode or major mode. //命名mode最好带自己的前缀
