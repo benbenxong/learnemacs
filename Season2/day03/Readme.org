@@ -141,5 +141,31 @@ M-x indent-region 可以缩进重排
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
 #+END_SRC
+
+4. another way to complete thing in emacs
+对company进行补充
+#+BEGIN_SRC emacs-lisp
+(setq hippie-expand-try-function-list '(try-expand-debbrev
+					try-expand-debbrev-all-buffers
+					try-expand-debbrev-from-kill
+					try-complete-file-name-partially
+					try-complete-file-name
+					try-expand-all-abbrevs
+					try-expand-list
+					try-expand-line
+					try-complete-lisp-symbol-partially
+					try-complete-lisp-symbol))
+
+(global-set-key (kbd "s-/") 'hippie-expand)
+#+END_SRC
+
+5. dired M-x d
++ 创建一个目录。如../test
+C-x C-f 在test下新建一个文件
+再按test目录进入后。如果没有新建的文件，则按g 刷新一下。
+C: copy file
+D: delete file
+d: mark del file x: execute
+
 ** Exercise
 1. Only turn on Linum-mode when doing programming (tips: use prog-mode-hook)
