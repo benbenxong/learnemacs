@@ -10,3 +10,11 @@
 5.本地客户机连接运程github
   $ git remote add origin git@github.com:benbenxong/learnemacs.git
 6.将本地home下内容备份到github
+
+home机器上部署：
+1. cd ~/.emacs.d/ 运行git-bash
+2. 从github上clone仓库 
+git clone git@github.com:benbenxong/learnemacs.git .
+3. 每天回家第一件事
+git pull //远程库与本地库合并
+
