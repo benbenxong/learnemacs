@@ -5,7 +5,7 @@
 
 (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family "Microsoft YaHei" :size 12)))
+                      (font-spec :family "Microsoft YaHei" :size 16)))
 
 (setq-default cursor-type 'bar)
 

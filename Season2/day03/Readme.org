@@ -30,6 +30,29 @@ $ git commit -m "add .gitignore"
 #+END_SRC
 
 3. load-file, load-path and load
+require 调用 load; load 调用 load-file.
+每个被调用el文件最后有一条（provide)函数，用于补充features列表。
+自定义函数autoload方法：
+例在init-better-defaults.el中：
+#+BEGIN_SRC emacs-lisp
+(defun test-autoload()
+    (interactive)
+    (message "test autoload"))
+#+END_SRC
+在init.el中：
+#+BEGIN_SRC emacs-lisp
+(autoload 'test-autoload "init-better-defaults")
+(test-autoload)
+;;开机后检查*message*，如果有test autoload则说明成功
+#+END_SRC
+如果用;;;###autoload则：
+init-better-defaults.el中，自定义函数前加;;;###autoload.
+init.el中：
+#+BEGIN_SRC emacs-lisp
+(update-file-autolads "~/.emacs.d/lisp/init-better-defaults.el" t "~/.emacs.d/lisp/init-better-defaults-autoload.el")
+(load "init-better-defaults-autoload"）;; ？？？没有验证！！！
+#+END_SRC
+---31'00"---
 4. features, provide and require, autoload
 (package-initialize)将初始化所有带autoload注释的features;
 自定义的el文件，最后一行应定义(provide 'init-packages)以声明此文件标识;
@@ -91,5 +114,32 @@ naming:  xxx-mode,  xxx-mode-key-map  xxx-mode-hook
 (global-auto-revert-mode t)
 #+END_SRC
 
+3. indent-region or buffer
+*scratch*
+M-x js2-mode
+var myfun = ...
+全选要重新排格式的代码块
+M-x indent-region 可以缩进重排
+下面代码块可以不用全选，重排整个buffer
+
+#+BEGIN_SRC emacs-lisp
+(defun indent-buffer()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer()
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+	(progn
+	  (indent-region (region-beginning) (region-end))
+	  (message "Indent selected region."))
+      (progn
+	(indent-buffer)
+	(message "Indent buffer.")))))
+
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
+#+END_SRC
 ** Exercise
 1. Only turn on Linum-mode when doing programming (tips: use prog-mode-hook)

@@ -6,11 +6,11 @@
 
 (define-abbrev-table 'global-abbrev-table '(
 					    ;; signature
-                                              ("8zl" "zilongshanren")
-                                              ;; microsoft
-					      ("8ms" "Mircsoft")
-                                              
-                                              ))
+					    ("8zl" "zilongshanren")
+					    ;; microsoft
+					    ("8ms" "Mircsoft")
+					    
+					    ))
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -18,8 +18,6 @@
 (recentf-mode 1)			
 
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-
-(provide 'init-better-defaults)
 
 (electric-indent-mode 1)
 
@@ -41,3 +39,24 @@
 (popwin-mode 1)
 
 (setq-default abbrev-mode t)
+
+(defun indent-buffer()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer()
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+	(progn
+	  (indent-region (region-beginning) (region-end))
+	  (message "Indent selected region."))
+      (progn
+	(indent-buffer)
+	(message "Indent buffer.")))))
+
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
+
+(provide 'init-better-defaults)
+
