@@ -21,4 +21,3 @@
 
 
 (provide 'init-keybindings)
-~/.emacs.d/
