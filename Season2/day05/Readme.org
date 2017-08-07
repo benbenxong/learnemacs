@@ -11,7 +11,9 @@
 
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 #+END_SRC
-
+注：相当于扩展show-paren-function，此advice名为fix-show-paren-function
+    save-excursion 保存光标位置。
+--8'30"n
 ** Editing large web page 
 #+BEGIN_SRC emacs-lisp
 (defun remove-dos-eol ()
@@ -58,11 +60,26 @@ toggle indent in web-mode
 
   (global-set-key (kbd "C-c t i") 'my-toggle-web-indent)
 #+END_SRC
-
+;; C-c t i 用来4，2缩进切换
+;; M-; 注释行（可以是范围）
 
 *** js2-refactor
-- extract method
-- extract function
+#+BEGIN_SRC emacs-lisp
+(add-hook 'js2-mode-hook 'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-m")
+#+END_SRC
+- extract method (em)
+- extract function (ef)
+选中代码块
+C-c C-m :ef 然后输入新函数名，会将代码块提取为新的函数，原位置为新函数调用。
+em 提取方法
+
+- extract slurp (sl)
+C-c C-m :sl 将for 代码块外部变量传入for代码块里面。
+反向操作为 :ba
+
+- ip
+将本地函数数据值变为变量
 
 ** occur and imenu
 1. improve occur
