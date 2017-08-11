@@ -7,7 +7,9 @@
  '(company-minimum-prefix-length 3)
  '(custom-safe-themes
    (quote
-    ("9492cf1ac00c8a1f7130a867a97404dfeb6727801c6b2b40b853b91543f7af67" default))))
+    ("9492cf1ac00c8a1f7130a867a97404dfeb6727801c6b2b40b853b91543f7af67" default)))
+ '(popwin:popup-window-position (quote right))
+ '(popwin:popup-window-width 80))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

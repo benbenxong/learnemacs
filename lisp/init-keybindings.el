@@ -19,5 +19,6 @@
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 
+;;(global-set-key (kbd "M-s o") 'occur-dwim)
 
 (provide 'init-keybindings)

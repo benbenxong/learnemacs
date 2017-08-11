@@ -80,8 +80,9 @@ C-c C-m :sl 将for 代码块外部变量传入for代码块里面。
 
 - ip
 将本地函数数据值变为变量
-
 ** occur and imenu
+--37'
+注：有些windows中没有的键，暂时用C-c代替
 1. improve occur
 #+BEGIN_SRC emacs-lisp
   (defun occur-dwim ()
@@ -96,9 +97,9 @@ C-c C-m :sl 将for 代码块外部变量传入for代码块里面。
                 (regexp-quote sym))))
           regexp-history)
     (call-interactively 'occur))
-  (global-set-key "M-s o" 'occur-dwim)
+  (global-set-key "C-c s o" 'occur-dwim)
 #+END_SRC
-
+--43'
 2. improve imenu
 #+BEGIN_SRC emacs-lisp
   (defun js2-imenu-make-index ()
