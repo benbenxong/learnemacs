@@ -142,10 +142,15 @@ expand-region 到init-packages;
 (global-set-key (kbd "C-=") 'er/expand-region)
 作用：不再需要C-spac ，只要按C-=选中光标处字块，再按=向外扩展，-号收缩。
 --56'
+
+iedit 加到init-packages
+(global-set-key (kbd "C-c s e") 'iedit-mode) ;; def: C-;
+注：可以配合前面的occur,exp-region使用
+
 ** Bonus Time. Org export
 export to html,  you could also export to pdf
 
-=C-x C-e=
+=C-c C-e=
 
 ** Exercises
 1. Learn how to use emmet-mode to do zen coding: https://github.com/smihica/emmet-mode

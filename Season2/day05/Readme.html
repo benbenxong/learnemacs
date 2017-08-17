@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Readme</title>
-<!-- 2016-04-24 Sun 12:11 -->
+<!-- 2017-08-17 周四 16:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="guanghui" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center; }
@@ -179,9 +178,13 @@ for the JavaScript code in this tag.
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 </pre>
 </div>
+<p>
+注：相当于扩展show-paren-function，此advice名为fix-show-paren-function
+    save-excursion 保存光标位置。
+&#x2013;8'30"n
+</p>
 </div>
 </div>
-
 <div id="outline-container-sec-1-2" class="outline-3">
 <h3 id="sec-1-2"><span class="section-number-3">1.2</span> Editing large web page</h3>
 <div class="outline-text-3" id="text-1-2">
@@ -242,26 +245,60 @@ toggle indent in web-mode
 (global-set-key (kbd "C-c t i") 'my-toggle-web-indent)
 </pre>
 </div>
+<p>
+;; C-c t i 用来4，2缩进切换
+;; M-; 注释行（可以是范围）
+</p>
 </div>
 </div>
-
 
 <div id="outline-container-sec-1-3-2" class="outline-4">
 <h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> js2-refactor</h4>
 <div class="outline-text-4" id="text-1-3-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'js2-mode-hook 'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-m")
+</pre>
+</div>
 <ul class="org-ul">
-<li>extract method
+<li>extract method (em)
 </li>
-<li>extract function
+<li>extract function (ef)
 </li>
 </ul>
-</div>
-</div>
-</div>
+<p>
+选中代码块
+C-c C-m :ef 然后输入新函数名，会将代码块提取为新的函数，原位置为新函数调用。
+em 提取方法
+</p>
 
+<ul class="org-ul">
+<li>extract slurp (sl)
+</li>
+</ul>
+<p>
+C-c C-m :sl 将for 代码块外部变量传入for代码块里面。
+反向操作为 :ba
+</p>
+
+<ul class="org-ul">
+<li>ip
+</li>
+</ul>
+<p>
+将本地函数数据值变为变量
+</p>
+</div>
+</div>
+</div>
 <div id="outline-container-sec-1-4" class="outline-3">
 <h3 id="sec-1-4"><span class="section-number-3">1.4</span> occur and imenu</h3>
 <div class="outline-text-3" id="text-1-4">
+<p>
+&#x2013;37'
+注：有些windows中没有的键，暂时用C-c代替
+</p>
 <ol class="org-ol">
 <li>improve occur
 </li>
@@ -280,14 +317,36 @@ toggle indent in web-mode
 	      (regexp-quote sym))))
 	regexp-history)
   (call-interactively 'occur))
-(global-set-key "M-s o" 'occur-dwim)
+(global-set-key "C-c s o" 'occur-dwim)
 </pre>
 </div>
+<p>
+&#x2013;43'
+;;让弹出窗口显示在右边
+M-x customize-group popwin position:right
+</p>
+
+<p>
+;;查找替换
+C-c s o &#x2013;&gt; C-x o &#x2013;&gt; M-x occur-edit-mode e 对查找结果进行编辑
+</p>
+
+<p>
+;;光标所在位置的单词默认为C-c s o 初始要查找的内容
+</p>
 
 <ol class="org-ol">
 <li>improve imenu
 </li>
 </ol>
+<p>
+M-x imenu 列出buffer中所有函数。输入函数名，可跳转到函数定义处。
+</p>
+
+<p>
+M-x counsel-imenu 可以列出.js中的函数。(可以在init-packages中定义快捷键)
+</p>
+
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(defun js2-imenu-make-index ()
@@ -309,13 +368,31 @@ toggle indent in web-mode
 	      (lambda ()
 		(setq imenu-create-index-function 'js2-imenu-make-index)))
 
-(global-set-key (kbd "M-s i") 'counsel-imenu)
+(global-set-key (kbd "C-c s i") 'counsel-imenu)
 </pre>
 </div>
+<p>
+;; 将describe 等开头的语句块像函数一样定位。(测试时，先将js文件关闭再打开，然后C-c s i)
+</p>
 </div>
 </div>
 <div id="outline-container-sec-1-5" class="outline-3">
 <h3 id="sec-1-5"><span class="section-number-3">1.5</span> expand-region and iedit mode</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+一般选中操作是，在一点按C-spac (windows C-s-@)，C-f/M-f向后选中，打”或(可以将内容括起。
+expand-region 到init-packages; 
+(global-set-key (kbd "C-=") 'er/expand-region)
+作用：不再需要C-spac ，只要按C-=选中光标处字块，再按=向外扩展，-号收缩。
+&#x2013;56'
+</p>
+
+<p>
+iedit 加到init-packages
+(global-set-key (kbd "C-c s e") 'iedit-mode) ;; def: C-;
+注：可以配合前面的occur,exp-region使用
+</p>
+</div>
 </div>
 
 <div id="outline-container-sec-1-6" class="outline-3">
@@ -326,7 +403,7 @@ export to html,  you could also export to pdf
 </p>
 
 <p>
-<code>C-x C-e</code>
+<code>C-c C-e</code>
 </p>
 </div>
 </div>
@@ -347,8 +424,7 @@ export to html,  you could also export to pdf
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: guanghui</p>
-<p class="date">Created: 2016-04-24 Sun 12:11</p>
+<p class="date">Created: 2017-08-17 周四 16:50</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.0.92.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -21,7 +21,8 @@
 				   web-mode
 				   js2-refactor
 				   expand-region
-                )  "Default packages")
+				   iedit
+				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
   (defun zilongshanren/packages-installed-p ()
@@ -101,5 +102,7 @@
                   (setq imenu-create-index-function 'js2-imenu-make-index)))
 
 (global-set-key (kbd "C-=") 'er/expand-region)
+
+;;(global-set-key (kbd "C-c s e") 'iedit-mode) def: "C-;""
 
 (provide 'init-packages)
