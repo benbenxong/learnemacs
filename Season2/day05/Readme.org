@@ -100,7 +100,19 @@ C-c C-m :sl 将for 代码块外部变量传入for代码块里面。
   (global-set-key "C-c s o" 'occur-dwim)
 #+END_SRC
 --43'
+;;让弹出窗口显示在右边
+M-x customize-group popwin position:right
+
+;;查找替换
+C-c s o --> C-x o --> M-x occur-edit-mode e 对查找结果进行编辑
+
+;;光标所在位置的单词默认为C-c s o 初始要查找的内容
+
 2. improve imenu
+M-x imenu 列出buffer中所有函数。输入函数名，可跳转到函数定义处。
+
+M-x counsel-imenu 可以列出.js中的函数。(可以在init-packages中定义快捷键)
+
 #+BEGIN_SRC emacs-lisp
   (defun js2-imenu-make-index ()
         (interactive)
@@ -121,10 +133,15 @@ C-c C-m :sl 将for 代码块外部变量传入for代码块里面。
                 (lambda ()
                   (setq imenu-create-index-function 'js2-imenu-make-index)))
 
-  (global-set-key (kbd "M-s i") 'counsel-imenu)
+  (global-set-key (kbd "C-c s i") 'counsel-imenu)
 #+END_SRC
-**  expand-region and iedit mode
-
+;; 将describe 等开头的语句块像函数一样定位。(测试时，先将js文件关闭再打开，然后C-c s i)
+** expand-region and iedit mode
+一般选中操作是，在一点按C-spac (windows C-s-@)，C-f/M-f向后选中，打”或(可以将内容括起。
+expand-region 到init-packages; 
+(global-set-key (kbd "C-=") 'er/expand-region)
+作用：不再需要C-spac ，只要按C-=选中光标处字块，再按=向外扩展，-号收缩。
+--56'
 ** Bonus Time. Org export
 export to html,  you could also export to pdf
 

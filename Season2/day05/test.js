@@ -1,3 +1,6 @@
+'use strict';
+const Fs = require('fire-fs');
+
 function add(val_a) {
     var a = val_a;
     var b = 2;
@@ -21,3 +24,6 @@ var obj = {
 	add(1, 1);
     }
 };
+
+describe('Native Module', function() {
+} );

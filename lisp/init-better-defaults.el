@@ -96,6 +96,7 @@
 ;;系统默认查找串用单引号，windows系统不认！
 (setq counsel-git-grep-cmd-default "git --no-pager grep --full-name -n --no-color -i -e \"%s\"")
 
+;; dwim = do what I mean
 (defun occur-dwim ()
   "Call `occur' with a sane default."
   (interactive)
