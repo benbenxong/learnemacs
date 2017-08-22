@@ -1,18 +1,28 @@
 * Spacemacs Rocks Season 2 (Day 6)
 ** Bonus Time: Org-mdoe
 Use org-capture to take notes
-�Ǳʼǹ���
+记笔记工具
 #+BEGIN_SRC emacs-lisp
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/.emacs.d/gtd.org" "��������")
+        '(("t" "Todo" entry (file+headline "~/.emacs.d/gtd.org" "工作安排")
            "* TODO [#B] %?\n  %i\n"
            :empty-lines 1)))
 #+END_SRC
 M-x org-capture
 (global-set-key (kbd "C-c r") 'org-capture)
-ע��C-x RET f utf-8 RET ���utf-8
- 
+(setq org-agenda-files '("~/.emacs.d/"))
+C-c a a ;;现在还没有列表（因为没定时间）
+gtd.org里某一项：C-c C-s 定时间
+
+安装org-pomodoro: packages; (require 'org-pomodoro)
+M-x cust group /org-pomodoro
+  long break length: 20 -> 40 ->save future
+
+C-c a a 到某一项上 M-x org-pomodoro[return] 状态栏会显示任务信息。
+
+注：C-x RET f utf-8 RET 存成utf-8
+全局设置：(set-language-environment "UTF-8") 
 Further reading:
 http://orgmode.org/manual/Capture.html
 *** Install Org pomodoro to track my time

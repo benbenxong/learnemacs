@@ -111,5 +111,7 @@
   (call-interactively 'occur))
 (global-set-key (kbd "C-c s o") 'occur-dwim)
 
+(set-language-environment "UTF-8")
+
 (provide 'init-better-defaults)
 
