@@ -104,6 +104,6 @@
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;;(global-set-key (kbd "C-c s e") 'iedit-mode) def: "C-;""
+(global-set-key (kbd "C-c s e") 'iedit-mode) ;;def: "C-;""
 (require 'org-pomodoro)
 (provide 'init-packages)

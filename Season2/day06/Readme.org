@@ -38,6 +38,14 @@ search: emacs company c-n keybindings ;;将补全下拉列表时M-p/M-n改为C-p
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 ** Batch rename files
 1. press `C-x C-q` in dired mode
+C-x C-j 进入目录buffer. shift+6 进入上级目录。
++ 新建.emacs.d/test-dir
+C-x C-f 创建文件hello.txt 输入hello. C 拷贝2个文件hello2.txt hello3.txt
+C-x C-q 进入可编辑模式
+C= 选定hello
+C-c s e 进入批量编辑，可修改hello为hello-world
+C-c C-c 保存修改
+M-x reval-in-osx-finder 可查看osx下的文件列表
 2. use expand-region and iedit to batch change files
 
 ** search and replace
