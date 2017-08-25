@@ -28,9 +28,14 @@ http://orgmode.org/manual/Capture.html
 *** Install Org pomodoro to track my time
 
 ** clean up configs
-1. move keybindings into one place
+1. move keybindings into one place (init.el最后一行，其它el文件中的键绑定均集中在init-keybindings)
 2. make c-n and c-p to select company condicate
-
+search: emacs company c-n keybindings ;;将补全下拉列表时M-p/M-n改为C-p/C-n使统一风格
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
 ** Batch rename files
 1. press `C-x C-q` in dired mode
 2. use expand-region and iedit to batch change files
