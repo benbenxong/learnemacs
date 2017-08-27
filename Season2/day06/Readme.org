@@ -45,10 +45,11 @@ C-x C-q 进入可编辑模式
 C= 选定hello
 C-c s e 进入批量编辑，可修改hello为hello-world
 C-c C-c 保存修改
-M-x reval-in-osx-finder 可查看osx下的文件列表
+M-x reveal-in-osx-finder 可查看osx下的文件列表
+
 2. use expand-region and iedit to batch change files
 
-** search and replace
+3** search and replace
 *** install helm-ag
 1. at first, you should install ag
 search speed:  ag > pt > ack > grep

@@ -87,7 +87,7 @@
 
 ;; 延迟加载
 (with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "RET") 'dire-find-alternate-file))
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
 (require 'dired-x)
 

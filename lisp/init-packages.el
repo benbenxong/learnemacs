@@ -23,6 +23,7 @@
 				   expand-region
 				   iedit
 				   org-pomodoro
+				   reveal-in-osx-finder
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
