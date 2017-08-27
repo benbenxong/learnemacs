@@ -10,17 +10,17 @@ cd C:\Users\alan\AppData\Roaming\.emacs.d  -file/git bash here
 $ git init
 $ git add .
 $ git commit -m "first commit"
-//Î´Ìá½»Ç°»Ö¸´
+//æœªæäº¤å‰æ¢å¤
 $ git checkout init.el
-  (init.el ÖĞĞèÉèÖÃ(global-auto-revert-mode t) ¼´µ±Íâ²¿ÎÄ¼şĞŞ¸ÄÊ±²»ÓÃÖØĞÂ´ò¿ª´ËÎÄ¼ş)
-//auto-save-list ²»²Î¼Ó±¸·İ
+  (init.el ä¸­éœ€è®¾ç½®(global-auto-revert-mode t) å³å½“å¤–éƒ¨æ–‡ä»¶ä¿®æ”¹æ—¶ä¸ç”¨é‡æ–°æ‰“å¼€æ­¤æ–‡ä»¶)
+//auto-save-list ä¸å‚åŠ å¤‡ä»½
 $ vim .gitignore +auto-save-list
 $ git add .gitignore
 $ git commit -m "add .gitignore"
-×¢£º(setq auto-save-default nil)Ã²ËÆ²»Æğ×÷ÓÃ£¡
+æ³¨ï¼š(setq auto-save-default nil)è²Œä¼¼ä¸èµ·ä½œç”¨ï¼
 
 2. help window is anoyying.. 
-½â¾ö°ïÖú´°¿Ú´ò¿ªºó£¬¹â±êÃ»ÓĞ¶¨Î»µ½´Ë´°¿Ú£¬µ¼ÖÂĞè½øÈë´Ë´°¿ÚºóÔÙ°´Q¡£
+è§£å†³å¸®åŠ©çª—å£æ‰“å¼€åï¼Œå…‰æ ‡æ²¡æœ‰å®šä½åˆ°æ­¤çª—å£ï¼Œå¯¼è‡´éœ€è¿›å…¥æ­¤çª—å£åå†æŒ‰Qã€‚
 #+BEGIN_SRC emacs-lisp
 ;; add popwin mode
 ;; why this line is needed
@@ -30,44 +30,44 @@ $ git commit -m "add .gitignore"
 #+END_SRC
 
 3. load-file, load-path and load
-require µ÷ÓÃ load; load µ÷ÓÃ load-file.
-Ã¿¸ö±»µ÷ÓÃelÎÄ¼ş×îºóÓĞÒ»Ìõ£¨provide)º¯Êı£¬ÓÃÓÚ²¹³äfeaturesÁĞ±í¡£
-×Ô¶¨Òåº¯Êıautoload·½·¨£º
-ÀıÔÚinit-better-defaults.elÖĞ£º
+require è°ƒç”¨ load; load è°ƒç”¨ load-file.
+æ¯ä¸ªè¢«è°ƒç”¨elæ–‡ä»¶æœ€åæœ‰ä¸€æ¡ï¼ˆprovide)å‡½æ•°ï¼Œç”¨äºè¡¥å……featuresåˆ—è¡¨ã€‚
+è‡ªå®šä¹‰å‡½æ•°autoloadæ–¹æ³•ï¼š
+ä¾‹åœ¨init-better-defaults.elä¸­ï¼š
 #+BEGIN_SRC emacs-lisp
 (defun test-autoload()
     (interactive)
     (message "test autoload"))
 #+END_SRC
-ÔÚinit.elÖĞ£º
+åœ¨init.elä¸­ï¼š
 #+BEGIN_SRC emacs-lisp
 (autoload 'test-autoload "init-better-defaults")
 (test-autoload)
-;;¿ª»úºó¼ì²é*message*£¬Èç¹ûÓĞtest autoloadÔòËµÃ÷³É¹¦
+;;å¼€æœºåæ£€æŸ¥*message*ï¼Œå¦‚æœæœ‰test autoloadåˆ™è¯´æ˜æˆåŠŸ
 #+END_SRC
-Èç¹ûÓÃ;;;###autoloadÔò£º
-init-better-defaults.elÖĞ£¬×Ô¶¨Òåº¯ÊıÇ°¼Ó;;;###autoload.
-init.elÖĞ£º
+å¦‚æœç”¨;;;###autoloadåˆ™ï¼š
+init-better-defaults.elä¸­ï¼Œè‡ªå®šä¹‰å‡½æ•°å‰åŠ ;;;###autoload.
+init.elä¸­ï¼š
 #+BEGIN_SRC emacs-lisp
 (update-file-autolads "~/.emacs.d/lisp/init-better-defaults.el" t "~/.emacs.d/lisp/init-better-defaults-autoload.el")
-(load "init-better-defaults-autoload"£©;; £¿£¿£¿Ã»ÓĞÑéÖ¤£¡£¡£¡
+(load "init-better-defaults-autoload"ï¼‰;; ï¼Ÿï¼Ÿï¼Ÿæ²¡æœ‰éªŒè¯ï¼ï¼ï¼
 #+END_SRC
 ---31'00"---
 4. features, provide and require, autoload
-(package-initialize)½«³õÊ¼»¯ËùÓĞ´øautoload×¢ÊÍµÄfeatures;
-×Ô¶¨ÒåµÄelÎÄ¼ş£¬×îºóÒ»ĞĞÓ¦¶¨Òå(provide 'init-packages)ÒÔÉùÃ÷´ËÎÄ¼ş±êÊ¶;
-init.el Í·²¿Ó¦¼ÓÉÏ(require 'init-packages)¡£
-²¢ÔÚÇ°Ãæ¼ÓÉÏload-pathÂ·¾¶(add-to-list 'load-path ..)
+(package-initialize)å°†åˆå§‹åŒ–æ‰€æœ‰å¸¦autoloadæ³¨é‡Šçš„features;
+è‡ªå®šä¹‰çš„elæ–‡ä»¶ï¼Œæœ€åä¸€è¡Œåº”å®šä¹‰(provide 'init-packages)ä»¥å£°æ˜æ­¤æ–‡ä»¶æ ‡è¯†;
+init.el å¤´éƒ¨åº”åŠ ä¸Š(require 'init-packages)ã€‚
+å¹¶åœ¨å‰é¢åŠ ä¸Šload-pathè·¯å¾„(add-to-list 'load-path ..)
 5. naming conventions
-zilongshanren/xxxx //±äÁ¿Ãû»òº¯ÊıÃû
-minor mode or major mode. //ÃüÃûmode×îºÃ´ø×Ô¼ºµÄÇ°×º
+zilongshanren/xxxx //å˜é‡åæˆ–å‡½æ•°å
+minor mode or major mode. //å‘½åmodeæœ€å¥½å¸¦è‡ªå·±çš„å‰ç¼€
 niubi-mode
 niubi-xxx 
 
    all of the names should have a prefix, such that the naming conflicts could be minimal.  
 6. define your abbrevs
-ÒòÎªÏµÍ³²¹È«£¬Èçzilongshanren/packages£¬»á²¹È«ºÜ³¤µÄÃû×Ö¡£Îª½â¾öÕâÖÖÇé¿ö£¬¾Í¶¨Òå×Ô¼ºµÄËõĞ´¡£
-Àı£ºÊäÈë8ms¼Ó¿Õ¸ñ»òÆäËü·Ç×ÖÄ¸Ôò»á²¹È«Îª: Mircsoft .
+å› ä¸ºç³»ç»Ÿè¡¥å…¨ï¼Œå¦‚zilongshanren/packagesï¼Œä¼šè¡¥å…¨å¾ˆé•¿çš„åå­—ã€‚ä¸ºè§£å†³è¿™ç§æƒ…å†µï¼Œå°±å®šä¹‰è‡ªå·±çš„ç¼©å†™ã€‚
+ä¾‹ï¼šè¾“å…¥8msåŠ ç©ºæ ¼æˆ–å…¶å®ƒéå­—æ¯åˆ™ä¼šè¡¥å…¨ä¸º: Mircsoft .
 #+BEGIN_SRC emacs-lisp
   (setq-default abbrev-mode t)
 
@@ -79,11 +79,11 @@ niubi-xxx
                                               ))
 #+END_SRC
 7. how to organize your configs
-- init-packages.el //°üÏà¹Ø
-- init-ui.el  //ÏÔÊ¾Ïà¹Ø
-- init-better-defaults.el  //Ä¬ÈÏÖµ
-- init-keybindings.el  //¿ì½İ¼ü
-- custom.el  //´æ·Å×Ô¶¯Éú³ÉÅäÖÃ¡£Èçinit.el×îºó
+- init-packages.el //åŒ…ç›¸å…³
+- init-ui.el  //æ˜¾ç¤ºç›¸å…³
+- init-better-defaults.el  //é»˜è®¤å€¼
+- init-keybindings.el  //å¿«æ·é”®
+- custom.el  //å­˜æ”¾è‡ªåŠ¨ç”Ÿæˆé…ç½®ã€‚å¦‚init.elæœ€å
 #+BEGIN_SRC emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 #+END_SRC
@@ -118,9 +118,9 @@ naming:  xxx-mode,  xxx-mode-key-map  xxx-mode-hook
 *scratch*
 M-x js2-mode
 var myfun = ...
-È«Ñ¡ÒªÖØĞÂÅÅ¸ñÊ½µÄ´úÂë¿é
-M-x indent-region ¿ÉÒÔËõ½øÖØÅÅ
-ÏÂÃæ´úÂë¿é¿ÉÒÔ²»ÓÃÈ«Ñ¡£¬ÖØÅÅÕû¸öbuffer
+å…¨é€‰è¦é‡æ–°æ’æ ¼å¼çš„ä»£ç å—
+M-x indent-region å¯ä»¥ç¼©è¿›é‡æ’
+ä¸‹é¢ä»£ç å—å¯ä»¥ä¸ç”¨å…¨é€‰ï¼Œé‡æ’æ•´ä¸ªbuffer
 
 #+BEGIN_SRC emacs-lisp
 (defun indent-buffer()
@@ -143,7 +143,7 @@ M-x indent-region ¿ÉÒÔËõ½øÖØÅÅ
 #+END_SRC
 
 4. another way to complete thing in emacs
-¶Ôcompany½øĞĞ²¹³ä
+å¯¹companyè¿›è¡Œè¡¥å……
 #+BEGIN_SRC emacs-lisp
 (setq hippie-expand-try-function-list '(try-expand-debbrev
 					try-expand-debbrev-all-buffers
@@ -160,40 +160,40 @@ M-x indent-region ¿ÉÒÔËõ½øÖØÅÅ
 #+END_SRC
 
 5. dired M-x d
-+ ´´½¨Ò»¸öÄ¿Â¼¡£Èç../test
-C-x C-f ÔÚtestÏÂĞÂ½¨Ò»¸öÎÄ¼ş
-ÔÙ°´testÄ¿Â¼½øÈëºó¡£Èç¹ûÃ»ÓĞĞÂ½¨µÄÎÄ¼ş£¬Ôò°´g Ë¢ĞÂÒ»ÏÂ¡£
++ åˆ›å»ºä¸€ä¸ªç›®å½•ã€‚å¦‚../test
+C-x C-f åœ¨testä¸‹æ–°å»ºä¸€ä¸ªæ–‡ä»¶
+å†æŒ‰testç›®å½•è¿›å…¥åã€‚å¦‚æœæ²¡æœ‰æ–°å»ºçš„æ–‡ä»¶ï¼Œåˆ™æŒ‰g åˆ·æ–°ä¸€ä¸‹ã€‚
 C: copy file
 D: delete file
 d: mark del file x: execute
 R: rename file
-(fset 'yes-or-no-p 'y-or-n) ¼ò»¯Ñ¯ÎÊÊäÈë
+(fset 'yes-or-no-p 'y-or-n) ç®€åŒ–è¯¢é—®è¾“å…¥
 
-µİ¹é¿½±´É¾³ıÄ¿Â¼Ê±¿ÉÈ¡ÏûÑ¯ÎÊ£º
+é€’å½’æ‹·è´åˆ é™¤ç›®å½•æ—¶å¯å–æ¶ˆè¯¢é—®ï¼š
 #+BEGIN_SRC emacs-lisp
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
 #+END_SRC
 
-½â¾öÖØ¸´Éú³ÉĞÂbuffer
+è§£å†³é‡å¤ç”Ÿæˆæ–°buffer
 #+BEGIN_SRC emacs-lisp
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; Ö÷¶¯¼ÓÔØ Dired Mode
+;; ä¸»åŠ¨åŠ è½½ Dired Mode
 ;; (require 'dired)
 ;; (defined-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 
-;; ÑÓ³Ù¼ÓÔØ
+;; å»¶è¿ŸåŠ è½½
 (with-eval-after-load 'dired
     (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
 #+END_SRC
 
-ÆôÓÃ dired-x ¿ÉÒÔÈÃÃ¿Ò»´Î½øÈë Dired Ä£Ê½Ê±£¬Ê¹ÓÃĞÂµÄ¿ì½İ¼ü C-x C-j ¾Í¿ÉÒÔ½øÈëµ±Ç°ÎÄ¼ş¼ĞµÄËùÔÚµÄÂ·¾¶¡£
+å¯ç”¨ dired-x å¯ä»¥è®©æ¯ä¸€æ¬¡è¿›å…¥ Dired æ¨¡å¼æ—¶ï¼Œä½¿ç”¨æ–°çš„å¿«æ·é”® C-x C-j å°±å¯ä»¥è¿›å…¥å½“å‰æ–‡ä»¶å¤¹çš„æ‰€åœ¨çš„è·¯å¾„ã€‚
 (require 'dired-x)
 
-Ê¹ÓÃ (setq dired-dwim-target 1) Ôò¿ÉÒÔÊ¹µ±Ò»¸ö´°¿Ú£¨frame£©ÖĞ´æÔÚÁ½¸ö·ÖÆÁ £¨window£©Ê±£¬
-½«ÁíÒ»¸ö·ÖÆÁ×Ô¶¯ÉèÖÃ³É¿½±´µØÖ·µÄÄ¿±ê¡£
+ä½¿ç”¨ (setq dired-dwim-target 1) åˆ™å¯ä»¥ä½¿å½“ä¸€ä¸ªçª—å£ï¼ˆframeï¼‰ä¸­å­˜åœ¨ä¸¤ä¸ªåˆ†å± ï¼ˆwindowï¼‰æ—¶ï¼Œ
+å°†å¦ä¸€ä¸ªåˆ†å±è‡ªåŠ¨è®¾ç½®æˆæ‹·è´åœ°å€çš„ç›®æ ‡ã€‚
 
 ** Exercise
 1. Only turn on Linum-mode when doing programming (tips: use prog-mode-hook)
