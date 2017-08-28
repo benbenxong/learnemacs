@@ -24,6 +24,8 @@
 				   iedit
 				   org-pomodoro
 				   reveal-in-osx-finder
+				   exec-path-from-shell
+				   helm-ag
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
@@ -107,4 +109,9 @@
 
 (global-set-key (kbd "C-c s e") 'iedit-mode) ;;def: "C-;""
 (require 'org-pomodoro)
+
+ ;; Find Executable Path on OS X
+ (when (memq window-system '(mac ns))
+   (exec-path-from-shell-initialize))
+
 (provide 'init-packages)
