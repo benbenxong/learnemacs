@@ -40,7 +40,12 @@ search: emacs company c-n keybindings ;;将补全下拉列表时M-p/M-n改为C-p
 1. press `C-x C-q` in dired mode
 C-x C-j 进入目录buffer. shift+6 进入上级目录。
 + 新建.emacs.d/test-dir
-C-x C-f 创建文件hello.txt 输入hello. C 拷贝2个文件hello2.txt hello3.txt1. flycheck-checkers
+C-x C-f 创建文件hello.txt 输入hello. C 拷贝2个文件hello2.txt hello3.txt1. 
+C-x C-q进入编辑模式，C=选中 C-c s e全部匹配，然后修改。C-c C-c 存盘。
+M-x reveal-in-osx-finder 查看文件名是否已经修改成功（成功）
+
+
+flycheck-checkers
 2. eslint
 
 
