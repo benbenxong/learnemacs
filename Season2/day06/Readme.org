@@ -44,7 +44,22 @@ C-x C-f 创建文件hello.txt 输入hello. C 拷贝2个文件hello2.txt hello3.t
 C-x C-q进入编辑模式，C=选中 C-c s e全部匹配，然后修改。C-c C-c 存盘。
 M-x reveal-in-osx-finder 查看文件名是否已经修改成功（成功）
 
+** search and replace
+安装helm-ag
+# Mac OS X 通过 Homebrew 安装
+brew install the_silver_searcher
 
+# Ubuntu 下安装
+apt-get install silversearcher-ag
+
+# Windows 下通过 msys2 安装（确保在 path 中）
+pacman -S mingw-w64-i686-ag # 32 位电脑
+pacman -S mingw-w64-x86_64-ag # 64 位电脑
+
+C-c p s 进入查找模式
+例：init org 找到3个结果
+C-c C-e 进入结果可编辑模式，可类似batch rename files的操作。
+** show js err with flycheck
 flycheck-checkers
 2. eslint
 
