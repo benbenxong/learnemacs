@@ -61,9 +61,16 @@ C-c p s 进入查找模式
 C-c C-e 进入结果可编辑模式，可类似batch rename files的操作。
 ** show js err with flycheck
 flycheck-checkers
-2. eslint
-
-
+1.安装node.js
+2.eslint
+$ npm install -g eslint
+$ eslint --init
+3.激活flycheck
+(global-flycheck-mode t);; 这时，连.el都有语法提示，我们是不希望这样的。所以：
+  (add-hook 'js2-mode-hook 'flycheck-mode)
+4.M-x flycheck-list-errors 列出所有错误
+      flycheck-verify-setup 选择语法检查器
+5. .eslintrc
 ** Snippets and auto snippet
 
 ** exercises

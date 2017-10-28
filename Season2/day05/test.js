@@ -14,7 +14,7 @@ var obj = {
 	    
 	}
 	var b = "world";
-	var c = a + " " + b;
+	var c = a + " " + b + +;
     },
 
     func1 : function () {
