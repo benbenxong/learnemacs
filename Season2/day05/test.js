@@ -27,3 +27,12 @@ var obj = {
 
 describe('Native Module', function() {
 } );
+
+var aa = [1 , 2, 3];
+var sum = 0;
+
+for(var i = 0; i < aa.length; i++) {
+    sum = aa[i];
+}
+
+console.log(sum);

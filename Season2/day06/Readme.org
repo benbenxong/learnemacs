@@ -72,7 +72,34 @@ $ eslint --init
       flycheck-verify-setup 选择语法检查器
 5. .eslintrc
 ** Snippets and auto snippet
+yasnippet 是一个代码块补全的插件（GitHub 地址）。使用下面的配置文件将其在所有 的编程语言的模式中激活。
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
+菜单栏有YASnippet, 执行load everthing
+这时，在test.js里敲for + <tab> 会补全出一个模板代码块. 还有log也可以。
+
+auto-yasnippet:
+1.加入init-packages
+2.init-packages中加
+  (smartparens-global-mode t)后加
+  ;;(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
+
+3.加绑定
+(global-set-key (kbd "H-w") #'aya-create)
+(global-set-key (kbd "H-y") #'aya-expand)
+
+4.测试：
+  1.*scrach* buffer中写下面一行
+  2.(add-to-listAA 'pathAA 'xxxAA)
+  3.将AA前加～。即成下面一行
+  4.(add-to-list~AA 'path~AA 'xxx~AA)
+  5.M-x aya-create 建立模板
+  6.buffer 空白处 M-x aya-expand 这时会出现与2.类似的行
+  7.将AA 改为其它字，如BB。变为下列行
+    (add-to-listAA 'pathAA 'xxxAA)
+    (add-to-listBB 'pathBB 'xxxBB)
 ** exercises
 1. give `helm-swoop` package a try: https://github.com/ShingoFukuyama/helm-swoop
 2. Give `org-mac-link` package a try: http://melpa.org/#/org-mac-link

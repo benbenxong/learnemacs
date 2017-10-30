@@ -27,6 +27,7 @@
 				   exec-path-from-shell
 				   helm-ag
 				   flycheck
+				   auto-yasnippet
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
@@ -53,7 +54,7 @@
 
 (smartparens-global-mode t)
 ;;(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-
+(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
 ;; config for web mode
 (defun my-web-mode-indent-setup ()
     (setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
@@ -117,4 +118,6 @@
 
 (add-hook 'js2-mode-hook 'flycheck-mode)
 
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 (provide 'init-packages)
