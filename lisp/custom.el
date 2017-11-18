@@ -12,6 +12,9 @@
  '(helm-ag-fuzzy-match t)
  '(helm-ag-use-agignore t)
  '(org-pomodoro-long-break-length 40)
+ '(package-selected-packages
+   (quote
+    (window-numbering evil-leader company monokai-theme hungry-delete swiper counsel smartparens js2-mode nodejs-repl popwin web-mode js2-refactor expand-region iedit org-pomodoro reveal-in-osx-finder exec-path-from-shell helm-ag flycheck auto-yasnippet evil)))
  '(popwin:popup-window-position (quote right))
  '(popwin:popup-window-width 80))
 (custom-set-faces

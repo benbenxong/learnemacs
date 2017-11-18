@@ -3,12 +3,16 @@
 C-w 向回删除一个字
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
+init-packages:
+(evil-mode 1)
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
 
 ** Evil (It's not Baidu!)   Turn Emacs into Vim in one second
 1. install Evil plugin
 
 2. tell the different between Evil and Vim
-   Universal args
+   Universal args //C-u 原来的设置; M-x customize-group -evil -search:scroll C-u set 'on'
 
 3. Evil state = Vim mode
 evil normal state
@@ -17,6 +21,7 @@ evil visual state
 evil motion state
 evil emacs state
 evil operator state (diw)
+C-z 会转换模式
 
 4. configure Evil leader key
 

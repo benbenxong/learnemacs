@@ -30,6 +30,8 @@
 				   flycheck
 				   auto-yasnippet
 				   evil
+				   evil-leader
+				   window-numbering
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
@@ -123,5 +125,24 @@
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (evil-mode t)
-(setq evil-want-C-u-scroll t)
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+(global-evil-leader-mode)
+
+(evil-leader/set-key
+  "e" 'find-file
+  "b" 'switch-to-buffer
+  "k" 'kill-buffer
+  "0"  'select-window-0
+  "1"  'select-window-1
+  "2"  'select-window-2
+  "3"  'select-window-3
+  "w/" 'split-window-right
+  "w-" 'split-window-below
+  ":"  'counsel-M-x
+  "wM" 'delete-other-windows
+  )
+
+(window-numbering-mode 1)
 (provide 'init-packages)
