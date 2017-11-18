@@ -127,13 +127,14 @@
 (evil-mode t)
 (setcdr evil-insert-state-map nil)
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
-
+(require 'evil-leader)
 (global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
 
 (evil-leader/set-key
-  "e" 'find-file
-  "b" 'switch-to-buffer
-  "k" 'kill-buffer
+  "ff" 'find-file
+  "bb" 'switch-to-buffer
+  "bk" 'kill-buffer
   "0"  'select-window-0
   "1"  'select-window-1
   "2"  'select-window-2
@@ -145,4 +146,6 @@
   )
 
 (window-numbering-mode 1)
+;;(require 'powerline)
+;;(powerline-default-theme)
 (provide 'init-packages)
