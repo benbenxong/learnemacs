@@ -4,6 +4,7 @@
     ;;(require 'package)
   ;;  (package-initialize)
     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
     )
 
 
@@ -28,6 +29,7 @@
 				   helm-ag
 				   flycheck
 				   auto-yasnippet
+				   evil
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
@@ -102,7 +104,6 @@
                                      ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*()[ \t]*{" 1)
                                      ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*:[ \t]*function[ \t]*(" 1)
                                      ("Task" "[. \t]task([ \t]*['\"]\\([^'\"]+\\)" 1)))))
-
 (add-hook 'js2-mode-hook
                 (lambda ()
                   (setq imenu-create-index-function 'js2-imenu-make-index)))
@@ -120,4 +121,7 @@
 
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(evil-mode t)
+(setq evil-want-C-u-scroll t)
 (provide 'init-packages)

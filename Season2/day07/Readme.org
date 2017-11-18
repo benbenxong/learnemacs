@@ -1,5 +1,7 @@
 * Spacemacs Rocks Season 2 (Day 7)
 ** Tweak C-w to delete backward
+C-w 向回删除一个字
+(global-set-key (kbd "C-w") 'backward-kill-word)
 
 
 ** Evil (It's not Baidu!)   Turn Emacs into Vim in one second
