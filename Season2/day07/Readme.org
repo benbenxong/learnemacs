@@ -10,6 +10,17 @@ init-packages:
 
 ** Evil (It's not Baidu!)   Turn Emacs into Vim in one second
 1. install Evil plugin
+evil-surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+v,i,w 选中一个单词，S '加两边引号; cs <old> <new> 改变原来surround.
+注：(默认加空格，）是不加空格。
+
+
+evil-nerd-commenter
+(define-key evil-normal-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+(evilnc-default-hotkeys)
+,/ 加注释或去注释标记
 
 2. tell the different between Evil and Vim
    Universal args //C-u 原来的设置; M-x customize-group -evil -search:scroll C-u set 'on'
@@ -24,6 +35,7 @@ evil operator state (diw)
 C-z 会转换模式
 
 4. configure Evil leader key
+(evil-leader/set-leader "<SPC>")
 
 5. press `C-z` to toggle between Normal and Emacs state ??
 

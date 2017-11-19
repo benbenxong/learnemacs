@@ -2,9 +2,9 @@
 
   (when (>= emacs-major-version 24)
     ;;(require 'package)
-  ;;  (package-initialize)
-    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
+    ;;(package-initialize)
+    (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
     )
 
 
@@ -32,6 +32,8 @@
 				   evil
 				   evil-leader
 				   window-numbering
+				   evil-surround
+				   evil-nerd-commenter
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
@@ -145,7 +147,15 @@
   "wM" 'delete-other-windows
   )
 
+'ffsdfhh'
+adf
+
 (window-numbering-mode 1)
 ;;(require 'powerline)
 ;;(powerline-default-theme)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+(define-key evil-normal-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+(define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+(evilnc-default-hotkeys)
 (provide 'init-packages)
