@@ -145,11 +145,19 @@
   "w-" 'split-window-below
   ":"  'counsel-M-x
   "wM" 'delete-other-windows
+  "qq" 'save-buffers-kill-terminal
   )
 
-'ffsdfhh'
-adf
 
+  (add-hook 'occur-mode-hook
+            (lambda ()
+              (evil-add-hjkl-bindings occur-mode-map 'emacs
+                (kbd "/")       'evil-search-forward
+                (kbd "n")       'evil-search-next
+                (kbd "N")       'evil-search-previous
+                (kbd "C-d")     'evil-scroll-down
+                (kbd "C-u")     'evil-scroll-up
+                )))
 (window-numbering-mode 1)
 ;;(require 'powerline)
 ;;(powerline-default-theme)

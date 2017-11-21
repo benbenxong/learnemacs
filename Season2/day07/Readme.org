@@ -48,6 +48,8 @@ C-z 会转换模式
 #+END_SRC
 
 6. binding h/j/k/l key
+C-s C-j 进入目录 这时可以使用hjkl
+M-s o 进入occur时，默认是normal state,如果希望是emacs state （即可使用hjkl) 则需以下配置。
 #+BEGIN_SRC emacs-lisp
   (add-hook 'occur-mode-hook
             (lambda ()
