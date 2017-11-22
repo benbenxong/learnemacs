@@ -64,7 +64,8 @@ M-s o 进入occur时，默认是normal state,如果希望是emacs state （即�
 Add this to Dired mode, ibuffer mode?
 
 ** Which key
-
+注：package-install找不到包时需要用package-refresh-contents来刷新。
+(which-key-mode)后，当按空格键后，下面会提示出所有空格开头键组合。
 ** Design your own key bindings
 1. Use SPC as the leader key
 2. Use comma as the major mode leader key

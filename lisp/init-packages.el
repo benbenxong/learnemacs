@@ -34,6 +34,7 @@
 				   window-numbering
 				   evil-surround
 				   evil-nerd-commenter
+				   which-key
 				   )  "Default packages")
 (setq package-selected-packages zilongshanren/packages)
 
@@ -166,4 +167,6 @@
 (define-key evil-normal-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
 (define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
 (evilnc-default-hotkeys)
+
+(which-key-mode)
 (provide 'init-packages)
