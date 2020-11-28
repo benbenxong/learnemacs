@@ -54,3 +54,9 @@ $ git revert [commit]
 # 暂时将未提交的变化移除，稍后再移入
 $ git stash
 $ git stash pop
+
+--emacs 显示放大缩小
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") 'text-scale-adjust)
+
